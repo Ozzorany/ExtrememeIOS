@@ -11,6 +11,7 @@
 		DC3D1237265139AB00E1ADDE /* MemeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC3D1235265139AB00E1ADDE /* MemeModel.xcdatamodeld */; };
 		DC3D123D26513D8F00E1ADDE /* Meme+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */; };
 		DC3D123E26513D8F00E1ADDE /* Meme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D123C26513D8F00E1ADDE /* Meme+CoreDataProperties.swift */; };
+		DC3D125C2651623B00E1ADDE /* NewMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D125B2651623B00E1ADDE /* NewMemeViewController.swift */; };
 		DCCB5F38263D65F900DF6E55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB5F37263D65F900DF6E55 /* AppDelegate.swift */; };
 		DCCB5F3A263D65F900DF6E55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB5F39263D65F900DF6E55 /* SceneDelegate.swift */; };
 		DCCB5F3C263D65F900DF6E55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB5F3B263D65F900DF6E55 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 		DC3D1236265139AB00E1ADDE /* MemeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemeModel.xcdatamodel; sourceTree = "<group>"; };
 		DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meme+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DC3D123C26513D8F00E1ADDE /* Meme+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meme+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC3D125B2651623B00E1ADDE /* NewMemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemeViewController.swift; sourceTree = "<group>"; };
 		DCCB5F34263D65F900DF6E55 /* extremememe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = extremememe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCB5F37263D65F900DF6E55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCCB5F39263D65F900DF6E55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				DCCB5F45263D65FA00DF6E55 /* Info.plist */,
 				DCCB5F6A263D71B000DF6E55 /* MemesViewController.swift */,
 				DCCB5F77263D885D00DF6E55 /* MemesTableViewCell.swift */,
+				DC3D125B2651623B00E1ADDE /* NewMemeViewController.swift */,
 			);
 			path = extremememe;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				DCCB5F3A263D65F900DF6E55 /* SceneDelegate.swift in Sources */,
 				DCCB5F78263D885D00DF6E55 /* MemesTableViewCell.swift in Sources */,
 				DC3D123D26513D8F00E1ADDE /* Meme+CoreDataClass.swift in Sources */,
+				DC3D125C2651623B00E1ADDE /* NewMemeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
