@@ -15,6 +15,12 @@ class MemesViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var edit: UIBarButtonItem!
+    
+    
+    @IBAction func editmode(_ sender: Any) {
+        editingFlag = !editingFlag
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }
