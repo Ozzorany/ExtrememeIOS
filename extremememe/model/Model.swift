@@ -10,62 +10,26 @@ import UIKit
 import CoreData
 
 class Model {
-static let instance = Model()
-
-private init(){}
+    static let instance = Model()
+    
+    private init(){}
+        
+    let modelFirebase = ModelFirebase()
         
     func getAllMemes(callback:@escaping ([Meme])->Void){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request = Meme.fetchRequest() as NSFetchRequest<Meme>
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        DispatchQueue.global().async {
-            //second thread code
-            var data = [Meme]()
-            do{
-                data = try context.fetch(request)
-            }catch{
-            }
-            
-            DispatchQueue.main.async {
-                // code to execute on main thread
-                callback(data)
-            }
-        }
+        modelFirebase.getAllMemes(callback: callback)
     }
-
+    
     func add(meme:Meme){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        do{
-            try context.save()
-        }catch{
-            
-        }
+        modelFirebase.add(meme: meme)
     }
-
+    
     func delete(meme:Meme){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        context.delete(meme)
-        do{
-            try context.save()
-        }catch{
-            
-        }
+        modelFirebase.delete(meme: meme)
     }
-
+    
     func getMeme(byId:String)->Meme?{
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-        let request = Meme.fetchRequest() as NSFetchRequest<Meme>
-        request.predicate = NSPredicate(format: "id == \(byId)")
-        do{
-            let students = try context.fetch(request)
-            if students.count > 0 {
-                return students[0]
-            }
-        }catch{
-            
-        }
+        
         return nil
     }
 
