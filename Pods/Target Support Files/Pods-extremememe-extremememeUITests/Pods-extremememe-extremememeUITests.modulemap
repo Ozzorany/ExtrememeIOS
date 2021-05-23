@@ -1,0 +1,6 @@
+framework module Pods_extremememe_extremememeUITests {
+  umbrella header "Pods-extremememe-extremememeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
