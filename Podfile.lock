@@ -362,6 +362,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - Picasso (0.4.6)
   - PromisesObjC (1.2.12)
 
 DEPENDENCIES:
@@ -369,6 +370,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - Firebase/Storage
+  - Picasso (~> 0.4.1)
 
 SPEC REPOS:
   trunk:
@@ -390,6 +392,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - Picasso
     - PromisesObjC
 
 SPEC CHECKSUMS:
@@ -411,8 +414,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  Picasso: cbc305d5e91446667413645b5faeb5d4b89d4c14
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 92d9b05a16939ed413ea0c7cae69370fb3d75baf
+PODFILE CHECKSUM: fc434bc6ff1c840d23d2d0157033d7bfede88815
 
 COCOAPODS: 1.10.1
