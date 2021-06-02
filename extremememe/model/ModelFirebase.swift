@@ -28,6 +28,7 @@ class ModelFirebase{
                             memes.append(st)
                         }
                     }
+                    sleep(5)
                     callback(memes)
                     return
                 }
@@ -37,7 +38,7 @@ class ModelFirebase{
         
     }
     
-    func add(meme:Meme){
+    func add(meme:Meme, callback:@escaping ()->Void){
         let db = Firestore.firestore()
         db.collection("memes").document(meme.id!).setData(meme.toJson()){
             err in
@@ -46,10 +47,11 @@ class ModelFirebase{
             }else{
                 print("Document successfully written!")
             }
+            callback()
         }
     }
     
-    func delete(meme:Meme){
+    func delete(meme:Meme, callback:@escaping ()->Void){
         let db = Firestore.firestore()
         db.collection("memes").document(meme.id!).delete() { err in
             if let err = err {
@@ -57,6 +59,7 @@ class ModelFirebase{
             } else {
                 print("Document successfully removed!")
             }
+            callback()
         }
 
     }
@@ -65,4 +68,24 @@ class ModelFirebase{
         
         return nil
     }
+    
+    static func saveImage(image:UIImage, callback:@escaping (String)->Void){
+        let storageRef = Storage.storage().reference(forURL:
+                                                        "gs://extrememe-ios.appspot.com/pic")
+        let data = image.jpegData(compressionQuality: 0.8)
+        let imageRef = storageRef.child("imageName")
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        imageRef.putData(data!, metadata: metadata) { (metadata, error) in
+            imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    callback("")
+                    return
+                }
+                print("url: \(downloadURL)")
+                callback(downloadURL.absoluteString)
+            }
+        }
     }
+    
+}

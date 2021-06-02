@@ -7,10 +7,12 @@
 
 import UIKit
 
+
 class MemesViewController: UIViewController{
     
     @IBOutlet weak var memesTableView: UITableView!
     var data = [Meme]()
+    var refreshControl = UIRefreshControl()
     var editingFlag = false
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,17 +25,38 @@ class MemesViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        Model.instance.notificationMemeList.observe {
+            self.reloadData()
+        }
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        self.reloadData()
+    }
+    
+    func reloadData(){
+        refreshControl.beginRefreshing()
+        Model.instance.getAllMemes{
+            memes in
+            self.data = memes
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        Model.instance.getAllMemes { memes in
-            self.data = memes
-            self.tableView.reloadData()
+        reloadData()
+        Model.instance.notificationMemeList.observe {
+            self.reloadData()
         }
     }
 }
+
+
 
 extension MemesViewController: UITableViewDataSource{
     
