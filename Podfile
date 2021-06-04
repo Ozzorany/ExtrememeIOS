@@ -11,6 +11,7 @@ pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 pod 'Picasso', '~> 0.4.1'
+pod 'Kingfisher', '~> 6.0'
 
 
   target 'extremememeTests' do

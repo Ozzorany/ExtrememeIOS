@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 
 class MemesViewController: UIViewController{
@@ -74,6 +75,8 @@ extension MemesViewController: UITableViewDataSource{
         
         let meme = data[indexPath.row]
         cell.memeDescription.text = meme.name
+        let url = URL(string: meme.imageUrl!)
+        cell.memeImg.kf.setImage(with: url)
         return cell
     }
 }
