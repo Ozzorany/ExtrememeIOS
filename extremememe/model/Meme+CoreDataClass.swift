@@ -9,15 +9,18 @@
 import Foundation
 import CoreData
 import UIKit
+import Firebase
 
 @objc(Meme)
 public class Meme: NSManagedObject {
-    static func create(id:String, name:String, imageUrl:String)->Meme{
+    static func create(id:String, name:String, imageUrl:String, lastUpdated: Int64=0)->Meme{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let meme = Meme(context: context)
         meme.id = id
         meme.name = name
         meme.imageUrl = imageUrl
+        meme.lastUpdated = lastUpdated
+        meme.logicalDeleted = false
         return meme
     }
     
@@ -28,6 +31,14 @@ public class Meme: NSManagedObject {
         meme.id = json["id"] as? String
         meme.name = json["name"] as? String
         meme.imageUrl = json["imageUrl"] as? String
+        meme.logicalDeleted = false
+        if let ld = json["logicalDeleted"] as? Bool{
+            meme.logicalDeleted = ld
+        }
+        meme.lastUpdated = 0
+        if let timestamp = json["lastUpdated"] as? Timestamp{
+            meme.lastUpdated = timestamp.seconds
+        }
         return meme
     }
     
@@ -40,6 +51,8 @@ public class Meme: NSManagedObject {
         }else{
             json["imageUrl"] = ""
         }
+        json["lastUpdated"] = FieldValue.serverTimestamp()
+        json["logicalDeleted"] = logicalDeleted
         return json
     }
 }
@@ -48,6 +61,7 @@ extension Meme {
     static func getAll(callback:@escaping ([Meme])->Void){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request = Meme.fetchRequest() as NSFetchRequest<Meme>
+        request.predicate = NSPredicate(format:"logicalDeleted == \(false)")
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         DispatchQueue.global().async {
@@ -67,6 +81,7 @@ extension Meme {
 
     func save(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         do{
             try context.save()
         }catch{
@@ -88,7 +103,9 @@ extension Meme {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
         let request = Meme.fetchRequest() as NSFetchRequest<Meme>
-        request.predicate = NSPredicate(format: "id == \(byId)")
+        request.predicate = NSPredicate(format: "id == \(byId) AND logicalDeleted == \(false)")
+        
+        
         do{
             let students = try context.fetch(request)
             if students.count > 0 {
@@ -98,5 +115,15 @@ extension Meme {
             
         }
         return nil
-    }}
+    }
+    
+    static func setLocalUpdate(_ update: Int64){
+        UserDefaults.standard.setValue(update, forKey: "MemeLastUpdateTime")
+    }
+    
+    static func getLocalUpdate()->Int64{
+        return Int64(UserDefaults.standard.integer(forKey: "MemeLastUpdateTime"))
+        
+    }
+}
 

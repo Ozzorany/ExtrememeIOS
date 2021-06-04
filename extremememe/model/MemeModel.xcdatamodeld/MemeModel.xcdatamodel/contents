@@ -3,9 +3,16 @@
     <entity name="Meme" representedClassName="Meme" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="lastUpdated" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="logicalDeleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Meme" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Meme" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

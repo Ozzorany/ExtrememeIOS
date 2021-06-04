@@ -15,9 +15,11 @@ class ModelFirebase{
         let db = Firestore.firestore()
     }
     
-    func getAllMemes(callback:@escaping ([Meme])->Void){
+    func getAllMemes(since: Int64, callback:@escaping ([Meme])->Void){
         let db = Firestore.firestore()
-        db.collection("memes").getDocuments { snapshot, error in
+        db.collection("memes")
+            .whereField("lastUpdated", isGreaterThan: Timestamp(seconds: since, nanoseconds: 0))
+            .getDocuments { snapshot, error in
             if let err = error{
                 print("Error reading document: \(err)")
             }else{
@@ -28,7 +30,6 @@ class ModelFirebase{
                             memes.append(st)
                         }
                     }
-                    sleep(5)
                     callback(memes)
                     return
                 }

@@ -97,9 +97,11 @@ extension MemesViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let meme = data[indexPath.row]
-            Model.instance.delete(meme: meme)
-            data.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            Model.instance.delete(meme: meme){
+                self.data.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+           
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }

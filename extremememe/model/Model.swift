@@ -37,7 +37,33 @@ class Model {
     let modelFirebase = ModelFirebase()
         
     func getAllMemes(callback:@escaping ([Meme])->Void){
-        modelFirebase.getAllMemes(callback: callback)
+        var localLastUpdateTime = Meme.getLocalUpdate()
+        
+        modelFirebase.getAllMemes(since: localLastUpdateTime){
+            (memes) in
+           
+            
+            for meme in memes {
+                if(meme.lastUpdated > localLastUpdateTime) {
+                    localLastUpdateTime = meme.lastUpdated
+                }
+            }
+            Meme.setLocalUpdate(localLastUpdateTime)
+
+           
+            
+            for meme in memes {
+                if meme.logicalDeleted {
+                    meme.delete()
+                }
+            }
+            
+            if(memes.count > 0){
+                memes[0].save()
+            }
+            
+            Meme.getAll(callback: callback)
+        }
     }
     
     func add(meme:Meme, callback:@escaping ()->Void){
@@ -47,8 +73,10 @@ class Model {
         }
     }
     
-    func delete(meme:Meme){
-        modelFirebase.delete(meme: meme){
+    func delete(meme:Meme, callback:@escaping ()->Void){
+        meme.logicalDeleted = true
+        modelFirebase.add(meme: meme){
+            callback()
             self.notificationMemeList.post()
         }
     }

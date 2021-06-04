@@ -1,8 +1,8 @@
 //
 //  Meme+CoreDataProperties.swift
-//  extremememe
+//  
 //
-//  Created by Oz Zorany on 16/05/2021.
+//  Created by Oz Zorany on 04/06/2021.
 //
 //
 
@@ -17,11 +17,9 @@ extension Meme {
     }
 
     @NSManaged public var id: String?
-    @NSManaged public var name: String?
     @NSManaged public var imageUrl: String?
-
-}
-
-extension Meme : Identifiable {
+    @NSManaged public var name: String?
+    @NSManaged public var lastUpdated: Int64
+    @NSManaged public var logicalDeleted: Bool
 
 }

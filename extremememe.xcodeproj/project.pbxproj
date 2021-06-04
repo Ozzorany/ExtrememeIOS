@@ -13,8 +13,8 @@
 		DC3D12312651355700E1ADDE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D12302651355700E1ADDE /* Model.swift */; };
 		DC3D1237265139AB00E1ADDE /* MemeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC3D1235265139AB00E1ADDE /* MemeModel.xcdatamodeld */; };
 		DC3D123D26513D8F00E1ADDE /* Meme+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */; };
-		DC3D123E26513D8F00E1ADDE /* Meme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D123C26513D8F00E1ADDE /* Meme+CoreDataProperties.swift */; };
 		DC3D125C2651623B00E1ADDE /* NewMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D125B2651623B00E1ADDE /* NewMemeViewController.swift */; };
+		DC48115C266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC48115B266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift */; };
 		DC518DF6265AD3A400E89061 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC518DF5265AD3A400E89061 /* GoogleService-Info.plist */; };
 		DC518DFE265AF38400E89061 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC518DFD265AF38400E89061 /* ModelFirebase.swift */; };
 		DCCB5F38263D65F900DF6E55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB5F37263D65F900DF6E55 /* AppDelegate.swift */; };
@@ -59,8 +59,8 @@
 		DC3D12302651355700E1ADDE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DC3D1236265139AB00E1ADDE /* MemeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemeModel.xcdatamodel; sourceTree = "<group>"; };
 		DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meme+CoreDataClass.swift"; sourceTree = "<group>"; };
-		DC3D123C26513D8F00E1ADDE /* Meme+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meme+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC3D125B2651623B00E1ADDE /* NewMemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemeViewController.swift; sourceTree = "<group>"; };
+		DC48115B266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Meme+CoreDataProperties.swift"; path = "/Users/ozzorany/Desktop/extremememe/extremememe/model/Meme+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DC518DF5265AD3A400E89061 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC518DFD265AF38400E89061 /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
 		DCCB5F34263D65F900DF6E55 /* extremememe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = extremememe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */,
-				DC3D123C26513D8F00E1ADDE /* Meme+CoreDataProperties.swift */,
+				DC48115B266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift */,
 				DC3D12302651355700E1ADDE /* Model.swift */,
 				DC3D1235265139AB00E1ADDE /* MemeModel.xcdatamodeld */,
 				DC518DFD265AF38400E89061 /* ModelFirebase.swift */,
@@ -443,13 +443,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC3D12312651355700E1ADDE /* Model.swift in Sources */,
-				DC3D123E26513D8F00E1ADDE /* Meme+CoreDataProperties.swift in Sources */,
 				DCCB5F3C263D65F900DF6E55 /* ViewController.swift in Sources */,
 				DCCB5F38263D65F900DF6E55 /* AppDelegate.swift in Sources */,
 				DC3D1237265139AB00E1ADDE /* MemeModel.xcdatamodeld in Sources */,
 				DCCB5F6B263D71B000DF6E55 /* MemesViewController.swift in Sources */,
 				DCCB5F3A263D65F900DF6E55 /* SceneDelegate.swift in Sources */,
 				DC518DFE265AF38400E89061 /* ModelFirebase.swift in Sources */,
+				DC48115C266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift in Sources */,
 				DCCB5F78263D885D00DF6E55 /* MemesTableViewCell.swift in Sources */,
 				DC3D123D26513D8F00E1ADDE /* Meme+CoreDataClass.swift in Sources */,
 				DC3D125C2651623B00E1ADDE /* NewMemeViewController.swift in Sources */,
