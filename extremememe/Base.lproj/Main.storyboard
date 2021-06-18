@@ -105,7 +105,7 @@
                     <tabBarItem key="tabBarItem" title="Item 2" id="HwB-7X-PNX"/>
                     <navigationItem key="navigationItem" title="memes list" id="GeC-Zw-IfE">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" id="1D8-qb-IlM">
+                            <barButtonItem title="Login" id="1D8-qb-IlM">
                                 <connections>
                                     <action selector="sinInButton:" destination="mpG-uH-nuS" id="NMX-LB-gCw"/>
                                 </connections>
@@ -119,6 +119,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="edit" destination="agH-Wm-Yad" id="332-Xp-4kg"/>
+                        <outlet property="loginbtn" destination="1D8-qb-IlM" id="0or-1i-c6H"/>
                         <outlet property="memesTableView" destination="DOx-F8-dlv" id="cmL-mT-NmZ"/>
                         <outlet property="tableView" destination="DOx-F8-dlv" id="BDr-5H-FGT"/>
                     </connections>
@@ -190,9 +191,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="27w-DT-9pW" kind="relationship" relationship="viewControllers" id="Yo2-ou-gP6"/>
-                        <segue destination="s8V-de-zqg" kind="relationship" relationship="viewControllers" id="R0m-v4-rML"/>
-                        <segue destination="sdE-KN-6Tm" kind="relationship" relationship="viewControllers" id="oo3-rJ-byv"/>
+                        <segue destination="sdE-KN-6Tm" kind="relationship" relationship="viewControllers" id="v5V-6W-LOc"/>
+                        <segue destination="s8V-de-zqg" kind="relationship" relationship="viewControllers" id="Hfh-dJ-hbn"/>
+                        <segue destination="27w-DT-9pW" kind="relationship" relationship="viewControllers" id="ICC-Ha-7xQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8g-JI-BMf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

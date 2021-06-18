@@ -18,8 +18,21 @@ class MemesViewController: UIViewController{
     var refreshControl = UIRefreshControl()
     var editingFlag = false
 
+    @IBOutlet weak var loginbtn: UIBarButtonItem!
     @IBAction func sinInButton(_ sender: Any) {
-        GIDSignIn.sharedInstance()?.signIn()
+        if loginbtn.title == "Logout" {
+            do {
+                try Auth.auth().signOut()
+                UserDefaults.standard.set("", forKey: "user")
+                loginbtn.title = "Login"
+            
+            } catch let error as NSError {
+                print(error)
+            }
+        } else {
+            GIDSignIn.sharedInstance()?.signIn()
+        }
+        
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,6 +45,7 @@ class MemesViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let user: String = UserDefaults.standard.string(forKey: "user") ?? ""
      
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
@@ -39,6 +53,14 @@ class MemesViewController: UIViewController{
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         Model.instance.notificationMemeList.observe {
             self.reloadData()
+        }
+        
+        Model.instance.loginNotification.observe {
+            self.loginbtn.title = "Logout"
+        }
+        
+        if user != "" {
+            loginbtn.title = "Logout"
         }
     }
     

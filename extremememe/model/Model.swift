@@ -32,6 +32,8 @@ class NotificationGeneral{
 class Model {
     static let instance = Model()
     public let notificationMemeList = NotificationGeneral("com.oz.extrememe")
+    public let loginNotification = NotificationGeneral("login")
+
     
     private init(){
     }
