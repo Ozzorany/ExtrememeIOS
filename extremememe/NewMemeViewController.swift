@@ -24,7 +24,7 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate &
     func saveMeme(url:String){
         let user: String = UserDefaults.standard.string(forKey: "user") ?? ""
         
-        let meme = Meme.create(id: "2", name: memeDescription.text, imageUrl: url, userId: user)
+        let meme = Meme.create(id: "", name: memeDescription.text, imageUrl: url, userId: user)
         Model.instance.add(meme: meme){
             self.navigationController?.popViewController(animated: true)
         }

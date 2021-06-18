@@ -40,7 +40,9 @@ class ModelFirebase{
     
     func add(meme:Meme, callback:@escaping ()->Void){
         let db = Firestore.firestore()
-        db.collection("memes").document(meme.id!).setData(meme.toJson()){
+        let id = Firestore.firestore().collection("memes").document().documentID
+        meme.id = id
+        db.collection("memes").document(id).setData(meme.toJson()){
             err in
             if let err = err {
                 print("Error writing document: \(err)")
