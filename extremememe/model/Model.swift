@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreData
+import Firebase
 
 class NotificationGeneral{
     let name: String
@@ -32,7 +33,8 @@ class Model {
     static let instance = Model()
     public let notificationMemeList = NotificationGeneral("com.oz.extrememe")
     
-    private init(){}
+    private init(){
+    }
         
     let modelFirebase = ModelFirebase()
         

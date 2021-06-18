@@ -11,7 +11,6 @@ import Firebase
 
 class ModelFirebase{
     init(){
-        FirebaseApp.configure()
         let db = Firestore.firestore()
     }
     

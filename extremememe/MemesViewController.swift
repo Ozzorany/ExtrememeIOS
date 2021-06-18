@@ -7,6 +7,8 @@
 
 import UIKit
 import Kingfisher
+import GoogleSignIn
+import Firebase
 
 
 class MemesViewController: UIViewController{
@@ -15,6 +17,10 @@ class MemesViewController: UIViewController{
     var data = [Meme]()
     var refreshControl = UIRefreshControl()
     var editingFlag = false
+
+    @IBAction func sinInButton(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +32,9 @@ class MemesViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
         tableView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         Model.instance.notificationMemeList.observe {

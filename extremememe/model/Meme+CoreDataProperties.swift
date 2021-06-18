@@ -2,7 +2,7 @@
 //  Meme+CoreDataProperties.swift
 //  
 //
-//  Created by Oz Zorany on 04/06/2021.
+//  Created by Oz Zorany on 18/06/2021.
 //
 //
 
@@ -18,8 +18,9 @@ extension Meme {
 
     @NSManaged public var id: String?
     @NSManaged public var imageUrl: String?
-    @NSManaged public var name: String?
     @NSManaged public var lastUpdated: Int64
     @NSManaged public var logicalDeleted: Bool
+    @NSManaged public var name: String?
+    @NSManaged public var userId: String?
 
 }

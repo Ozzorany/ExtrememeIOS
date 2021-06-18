@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/ozzorany/Desktop/extremememe/extremememe/model/Meme+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:extremememe.xcodeproj">
    </FileRef>
    <FileRef

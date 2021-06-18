@@ -10,6 +10,7 @@ pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
+pod 'GoogleSignIn'
 pod 'Picasso', '~> 0.4.1'
 pod 'Kingfisher', '~> 6.0'
 

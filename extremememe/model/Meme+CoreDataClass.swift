@@ -13,7 +13,7 @@ import Firebase
 
 @objc(Meme)
 public class Meme: NSManagedObject {
-    static func create(id:String, name:String, imageUrl:String, lastUpdated: Int64=0)->Meme{
+    static func create(id:String, name:String, imageUrl:String, lastUpdated: Int64=0, userId: String)->Meme{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let meme = Meme(context: context)
         meme.id = id
@@ -21,6 +21,7 @@ public class Meme: NSManagedObject {
         meme.imageUrl = imageUrl
         meme.lastUpdated = lastUpdated
         meme.logicalDeleted = false
+        meme.userId = userId
         return meme
     }
     
@@ -32,6 +33,7 @@ public class Meme: NSManagedObject {
         meme.name = json["name"] as? String
         meme.imageUrl = json["imageUrl"] as? String
         meme.logicalDeleted = false
+        meme.userId = json["userId"] as? String
         if let ld = json["logicalDeleted"] as? Bool{
             meme.logicalDeleted = ld
         }
@@ -51,6 +53,7 @@ public class Meme: NSManagedObject {
         }else{
             json["imageUrl"] = ""
         }
+        json["userId"] = userId
         json["lastUpdated"] = FieldValue.serverTimestamp()
         json["logicalDeleted"] = logicalDeleted
         return json

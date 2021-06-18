@@ -14,9 +14,9 @@
 		DC3D1237265139AB00E1ADDE /* MemeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC3D1235265139AB00E1ADDE /* MemeModel.xcdatamodeld */; };
 		DC3D123D26513D8F00E1ADDE /* Meme+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */; };
 		DC3D125C2651623B00E1ADDE /* NewMemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3D125B2651623B00E1ADDE /* NewMemeViewController.swift */; };
-		DC48115C266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC48115B266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift */; };
 		DC518DF6265AD3A400E89061 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC518DF5265AD3A400E89061 /* GoogleService-Info.plist */; };
 		DC518DFE265AF38400E89061 /* ModelFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC518DFD265AF38400E89061 /* ModelFirebase.swift */; };
+		DC54C750267D344D0008B357 /* Meme+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54C74F267D344D0008B357 /* Meme+CoreDataProperties.swift */; };
 		DCCB5F38263D65F900DF6E55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB5F37263D65F900DF6E55 /* AppDelegate.swift */; };
 		DCCB5F3A263D65F900DF6E55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB5F39263D65F900DF6E55 /* SceneDelegate.swift */; };
 		DCCB5F3C263D65F900DF6E55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCB5F3B263D65F900DF6E55 /* ViewController.swift */; };
@@ -60,9 +60,9 @@
 		DC3D1236265139AB00E1ADDE /* MemeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemeModel.xcdatamodel; sourceTree = "<group>"; };
 		DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meme+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DC3D125B2651623B00E1ADDE /* NewMemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemeViewController.swift; sourceTree = "<group>"; };
-		DC48115B266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Meme+CoreDataProperties.swift"; path = "/Users/ozzorany/Desktop/extremememe/extremememe/model/Meme+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DC518DF5265AD3A400E89061 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC518DFD265AF38400E89061 /* ModelFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFirebase.swift; sourceTree = "<group>"; };
+		DC54C74F267D344D0008B357 /* Meme+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Meme+CoreDataProperties.swift"; path = "/Users/ozzorany/Desktop/extremememe/extremememe/model/Meme+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		DCCB5F34263D65F900DF6E55 /* extremememe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = extremememe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCB5F37263D65F900DF6E55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCCB5F39263D65F900DF6E55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 		DC3D121826512A1100E1ADDE /* model */ = {
 			isa = PBXGroup;
 			children = (
+				DC54C74F267D344D0008B357 /* Meme+CoreDataProperties.swift */,
 				DC3D123B26513D8F00E1ADDE /* Meme+CoreDataClass.swift */,
-				DC48115B266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift */,
 				DC3D12302651355700E1ADDE /* Model.swift */,
 				DC3D1235265139AB00E1ADDE /* MemeModel.xcdatamodeld */,
 				DC518DFD265AF38400E89061 /* ModelFirebase.swift */,
@@ -215,6 +215,7 @@
 				DCCB5F31263D65F900DF6E55 /* Frameworks */,
 				DCCB5F32263D65F900DF6E55 /* Resources */,
 				365E9D193525A394B1D4A772 /* [CP] Embed Pods Frameworks */,
+				6B151F65DED1DFB4AB0CEE0B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +254,7 @@
 				DCCB5F52263D65FB00DF6E55 /* Frameworks */,
 				DCCB5F53263D65FB00DF6E55 /* Resources */,
 				6AD32BF40F948ACFD04D1FCF /* [CP] Embed Pods Frameworks */,
+				CAEF1251BCC835470299BBA9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -391,6 +393,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-extremememe-extremememeUITests/Pods-extremememe-extremememeUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6B151F65DED1DFB4AB0CEE0B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-extremememe/Pods-extremememe-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-extremememe/Pods-extremememe-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-extremememe/Pods-extremememe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BAEB540CBFE7682428A49249 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -411,6 +430,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAEF1251BCC835470299BBA9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-extremememe-extremememeUITests/Pods-extremememe-extremememeUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-extremememe-extremememeUITests/Pods-extremememe-extremememeUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-extremememe-extremememeUITests/Pods-extremememe-extremememeUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F3073CEBA7F81CDD8079D619 /* [CP] Check Pods Manifest.lock */ = {
@@ -449,7 +485,7 @@
 				DCCB5F6B263D71B000DF6E55 /* MemesViewController.swift in Sources */,
 				DCCB5F3A263D65F900DF6E55 /* SceneDelegate.swift in Sources */,
 				DC518DFE265AF38400E89061 /* ModelFirebase.swift in Sources */,
-				DC48115C266A5E3B00ABE1E3 /* Meme+CoreDataProperties.swift in Sources */,
+				DC54C750267D344D0008B357 /* Meme+CoreDataProperties.swift in Sources */,
 				DCCB5F78263D885D00DF6E55 /* MemesTableViewCell.swift in Sources */,
 				DC3D123D26513D8F00E1ADDE /* Meme+CoreDataClass.swift in Sources */,
 				DC3D125C2651623B00E1ADDE /* NewMemeViewController.swift in Sources */,

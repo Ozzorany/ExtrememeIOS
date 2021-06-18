@@ -104,11 +104,18 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="HwB-7X-PNX"/>
                     <navigationItem key="navigationItem" title="memes list" id="GeC-Zw-IfE">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" id="agH-Wm-Yad">
-                            <connections>
-                                <action selector="editmode:" destination="mpG-uH-nuS" id="U4J-6n-LrH"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="1D8-qb-IlM">
+                                <connections>
+                                    <action selector="sinInButton:" destination="mpG-uH-nuS" id="NMX-LB-gCw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="trash" catalog="system" id="agH-Wm-Yad">
+                                <connections>
+                                    <action selector="editmode:" destination="mpG-uH-nuS" id="U4J-6n-LrH"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="edit" destination="agH-Wm-Yad" id="332-Xp-4kg"/>
