@@ -81,6 +81,27 @@ extension Meme {
             }
         }
     }
+    
+    static func getAllMyMemes(userId: String, callback:@escaping ([Meme])->Void){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request = Meme.fetchRequest() as NSFetchRequest<Meme>
+        request.predicate = NSPredicate(format:"logicalDeleted == \(false) and userId == \(userId)")
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        DispatchQueue.global().async {
+            //second thread code
+            var data = [Meme]()
+            do{
+                data = try context.fetch(request)
+            }catch{
+            }
+            
+            DispatchQueue.main.async {
+                // code to execute on main thread
+                callback(data)
+            }
+        }
+    }
 
     func save(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

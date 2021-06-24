@@ -38,6 +38,31 @@ class ModelFirebase{
         
     }
     
+    func getMyMemes(since: Int64, userId: String, callback:@escaping ([Meme])->Void){
+        let db = Firestore.firestore()
+        db.collection("memes")
+            .whereField("lastUpdated", isGreaterThan: Timestamp(seconds: since, nanoseconds: 0))
+            .whereField("userId",isEqualTo: userId)
+            .getDocuments { snapshot, error in
+            if let err = error{
+                print("Error reading document: \(err)")
+            }else{
+                if let snapshot = snapshot{
+                    var memes = [Meme]()
+                    for snap in snapshot.documents{
+                        if let st = Meme.create(json:snap.data()){
+                            memes.append(st)
+                        }
+                    }
+                    callback(memes)
+                    return
+                }
+            }
+            callback([Meme]())
+        }
+        
+    }
+    
     func add(meme:Meme, callback:@escaping ()->Void){
         let db = Firestore.firestore()
         let id = Firestore.firestore().collection("memes").document().documentID

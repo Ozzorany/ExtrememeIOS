@@ -70,6 +70,36 @@ class Model {
         }
     }
     
+    func getMyMemes(userId: String, callback:@escaping ([Meme])->Void){
+        var localLastUpdateTime = Meme.getLocalUpdate()
+        
+        modelFirebase.getMyMemes(since: localLastUpdateTime, userId: userId){
+            (memes) in
+           
+            
+            for meme in memes {
+                if(meme.lastUpdated > localLastUpdateTime) {
+                    localLastUpdateTime = meme.lastUpdated
+                }
+            }
+            Meme.setLocalUpdate(localLastUpdateTime)
+
+           
+            
+            for meme in memes {
+                if meme.logicalDeleted {
+                    meme.delete()
+                }
+            }
+            
+            if(memes.count > 0){
+                memes[0].save()
+            }
+            
+            Meme.getAllMyMemes(userId: userId, callback: callback)
+        }
+    }
+    
     func add(meme:Meme, callback:@escaping ()->Void){
         modelFirebase.add(meme: meme){
             callback()

@@ -32,8 +32,10 @@ class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & 
     }
     
     func reloadData(){
+        let user: String = UserDefaults.standard.string(forKey: "user") ?? ""
+
         refreshControl.beginRefreshing()
-        Model.instance.getAllMemes{
+        Model.instance.getMyMemes(userId: user){
             memes in
             self.data = memes
             self.myMemesTableView.reloadData()
