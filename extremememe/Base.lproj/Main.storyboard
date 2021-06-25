@@ -221,21 +221,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="HwB-7X-PNX"/>
                     <navigationItem key="navigationItem" title="memes list" id="GeC-Zw-IfE">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Login" id="1D8-qb-IlM">
-                                <connections>
-                                    <action selector="sinInButton:" destination="mpG-uH-nuS" id="NMX-LB-gCw"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="trash" catalog="system" id="agH-Wm-Yad">
-                                <connections>
-                                    <action selector="editmode:" destination="mpG-uH-nuS" id="U4J-6n-LrH"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="1D8-qb-IlM">
+                            <connections>
+                                <action selector="sinInButton:" destination="mpG-uH-nuS" id="NMX-LB-gCw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="edit" destination="agH-Wm-Yad" id="332-Xp-4kg"/>
                         <outlet property="loginbtn" destination="1D8-qb-IlM" id="0or-1i-c6H"/>
                         <outlet property="memesTableView" destination="DOx-F8-dlv" id="cmL-mT-NmZ"/>
                         <outlet property="tableView" destination="DOx-F8-dlv" id="BDr-5H-FGT"/>
@@ -356,7 +348,6 @@
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="meme" width="700" height="700"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -40,9 +40,7 @@ class MemesViewController: UIViewController{
     @IBOutlet weak var edit: UIBarButtonItem!
     
     
-    @IBAction func editmode(_ sender: Any) {
-        editingFlag = !editingFlag
-    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         let user: String = UserDefaults.standard.string(forKey: "user") ?? ""
