@@ -85,7 +85,11 @@ extension Meme {
     static func getAllMyMemes(userId: String, callback:@escaping ([Meme])->Void){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request = Meme.fetchRequest() as NSFetchRequest<Meme>
-        request.predicate = NSPredicate(format:"logicalDeleted == \(false) and userId == \(userId)")
+        let logicalPredicate = NSPredicate(format: "logicalDeleted == \(false)")
+        let userIdPredicate = NSPredicate(format: "%K IN %@", "userId", [userId])
+        let addPredicate = NSCompoundPredicate(type: .and, subpredicates: [logicalPredicate, userIdPredicate])
+        request.predicate = addPredicate
+        //request.predicate = NSPredicate(format:"logicalDeleted == \(false)")
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         DispatchQueue.global().async {
