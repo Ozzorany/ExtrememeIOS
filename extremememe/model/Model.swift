@@ -33,7 +33,6 @@ class Model {
     static let instance = Model()
     public let notificationMemeList = NotificationGeneral("com.oz.extrememe")
     public let loginNotification = NotificationGeneral("login")
-
     
     private init(){
     }
@@ -58,12 +57,15 @@ class Model {
             
             for meme in memes {
                 if meme.logicalDeleted {
+                    meme.save()
                     meme.delete()
                 }
             }
             
             if(memes.count > 0){
-                memes[0].save()
+                if memes[0].id != nil {
+                    memes[0].save()
+                }
             }
             
             Meme.getAll(callback: callback)
@@ -116,6 +118,7 @@ class Model {
     
     func delete(meme:Meme, callback:@escaping ()->Void){
         meme.logicalDeleted = true
+        meme.lastUpdated = Int64(NSDate().timeIntervalSince1970)
         modelFirebase.update(meme: meme){
             callback()
             self.notificationMemeList.post()

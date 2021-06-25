@@ -88,7 +88,7 @@ class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & 
         
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 250
+            return 400
         }
         
         func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -130,7 +130,7 @@ class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & 
 
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-            let cell = self.myMemesTableView.cellForRow(at: indexPath) as! MyMemesTableViewCell
+            
         }
         
         func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

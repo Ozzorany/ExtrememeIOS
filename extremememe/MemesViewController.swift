@@ -25,6 +25,7 @@ class MemesViewController: UIViewController{
                 try Auth.auth().signOut()
                 UserDefaults.standard.set("", forKey: "user")
                 loginbtn.title = "Login"
+                self.tabBarController?.tabBar.isUserInteractionEnabled = false
             
             } catch let error as NSError {
                 print(error)
@@ -49,14 +50,25 @@ class MemesViewController: UIViewController{
         
         tableView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    
+        if user == "" {
+            self.tabBarController?.tabBar.isUserInteractionEnabled = false
+        }
+        else {
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+        }
+        
+        
         Model.instance.notificationMemeList.observe {
             self.reloadData()
         }
         
         Model.instance.loginNotification.observe {
             self.loginbtn.title = "Logout"
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
         }
         
+
         if user != "" {
             loginbtn.title = "Logout"
         }
@@ -96,7 +108,7 @@ extension MemesViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 400
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -113,9 +125,13 @@ extension MemesViewController: UITableViewDataSource{
         let cell = memesTableView.dequeueReusableCell(withIdentifier: "myMemeRow", for: indexPath) as! MemesTableViewCell
         
         let meme = data[indexPath.row]
-        cell.memeDescription.text = meme.name
-        let url = URL(string: meme.imageUrl!)
-        cell.memeImg.kf.setImage(with: url)
+        
+        if meme.id != nil {
+            cell.memeDescription.text = meme.name
+            let url = URL(string: meme.imageUrl!)
+            cell.memeImg.kf.setImage(with: url)
+        }
+        
         return cell
     }
 }

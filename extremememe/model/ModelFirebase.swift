@@ -43,6 +43,7 @@ class ModelFirebase{
         db.collection("memes")
             .whereField("lastUpdated", isGreaterThan: Timestamp(seconds: since, nanoseconds: 0))
             .whereField("userId",isEqualTo: userId)
+            .whereField("logicalDeleted", isEqualTo: false)
             .getDocuments { snapshot, error in
             if let err = error{
                 print("Error reading document: \(err)")
@@ -113,7 +114,7 @@ class ModelFirebase{
         let storageRef = Storage.storage().reference(forURL:
                                                         "gs://extrememe-ios.appspot.com/pic")
         let data = image.jpegData(compressionQuality: 0.8)
-        let imageRef = storageRef.child("imageName")
+        let imageRef = storageRef.child(UUID().uuidString)
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         imageRef.putData(data!, metadata: metadata) { (metadata, error) in
