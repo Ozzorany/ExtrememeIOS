@@ -14,8 +14,22 @@ import Firebase
 
 class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & UINavigationControllerDelegate{
     var data = [Meme]()
+    var selectedId: String = ""
+    var selectedImage: String?
+    var selectedDescription = ""
     var refreshControl = UIRefreshControl()
     
+    @IBAction func editMeme(_ sender: UIButton) {
+        let position = sender.convert(CGPoint.zero, to: self.myMemesTableView)
+        let indexPath = self.myMemesTableView.indexPathForRow(at: position)
+
+        let cell = self.myMemesTableView.cellForRow(at: indexPath!) as! MyMemesTableViewCell
+        
+        selectedId = cell.memeId
+        selectedImage = cell.url
+        selectedDescription = cell.memeDescription.text!
+        
+    }
     @IBOutlet weak var myMemesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +43,17 @@ class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & 
     
     @objc func refresh(_ sender: AnyObject) {
         self.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toAddScreen"){
+            
+            let destination = segue.destination as! NewMemeViewController
+            destination.memeUrl = selectedImage!
+            destination.memeId = selectedId
+            destination.memeDescr = selectedDescription
+            destination.isEditMode = true
+        }
     }
     
     func reloadData(){
@@ -60,6 +85,8 @@ class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & 
             return data.count
         }
         
+        
+        
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 250
         }
@@ -78,9 +105,19 @@ class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & 
             let cell = myMemesTableView.dequeueReusableCell(withIdentifier: "ownerMemeCell", for: indexPath) as! MyMemesTableViewCell
             
             let meme = data[indexPath.row]
-            cell.memeDescription.text = meme.name
-            let url = URL(string: meme.imageUrl!)
-            cell.memeImg.kf.setImage(with: url)
+            
+            if meme.id != nil {
+                cell.memeDescription.text = meme.name
+                cell.memeId = meme.id!
+                cell.url = meme.imageUrl!
+                
+                let url = URL(string: meme.imageUrl!)
+                cell.memeImg.kf.setImage(with: url)
+            } else {
+                print(indexPath)
+            }
+            
+            
             return cell
         }
     }
@@ -93,10 +130,8 @@ class MyMemesViewController: UIViewController,UIImagePickerControllerDelegate & 
 
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-            print("")
-            
+            let cell = self.myMemesTableView.cellForRow(at: indexPath) as! MyMemesTableViewCell
         }
-
         
         func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {

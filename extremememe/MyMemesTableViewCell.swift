@@ -14,6 +14,8 @@ class MyMemesTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    var memeId: String = ""
+    var url: String = ""
     @IBOutlet weak var memeImg: UIImageView!
     @IBOutlet weak var memeDescription: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {

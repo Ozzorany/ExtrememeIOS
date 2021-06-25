@@ -9,6 +9,10 @@ import UIKit
 
 
 class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    var memeId: String = ""
+    var memeUrl: String = ""
+    var memeDescr: String?
+    var isEditMode: Bool = false
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var memeDescription: UITextView!
     @IBAction func save(_ sender: Any) {
@@ -17,16 +21,29 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate &
                 self.saveMeme(url: url)
             }
         }else{
-            self.saveMeme(url: "")
+            self.saveMeme(url: memeUrl)
         }
     }
     
     func saveMeme(url:String){
         let user: String = UserDefaults.standard.string(forKey: "user") ?? ""
+        let meme: Meme
         
-        let meme = Meme.create(id: "", name: memeDescription.text, imageUrl: url, userId: user)
-        Model.instance.add(meme: meme){
+        if isEditMode
+        {
+            meme = Meme.create(id: memeId, name: memeDescription.text, imageUrl: url, userId: user)
+           
+            
+           Model.instance.update(meme: meme){
             self.navigationController?.popViewController(animated: true)
+            self.tabBarController?.selectedIndex = 0
+           }
+        } else {
+            meme = Meme.create(id: "", name: memeDescription.text, imageUrl: url, userId: user)
+            
+            Model.instance.add(meme: meme){
+                self.tabBarController?.selectedIndex = 0
+            }
         }
     }
     
@@ -59,6 +76,10 @@ class NewMemeViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if isEditMode {
+            let url = URL(string: memeUrl)
+            memeImage.kf.setImage(with: url)
+            memeDescription.text = memeDescr
+        }
     }
 }
