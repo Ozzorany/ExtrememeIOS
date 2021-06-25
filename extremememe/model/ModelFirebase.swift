@@ -91,6 +91,19 @@ class ModelFirebase{
 
     }
     
+    func update(meme:Meme, callback:@escaping ()->Void){
+        let db = Firestore.firestore()
+        db.collection("memes").document(meme.id!).setData(meme.toJson()){
+            err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            }else{
+                print("Document successfully written!")
+            }
+            callback()
+        }
+    }
+    
     func getStudent(byId:String)->Meme?{
         
         return nil

@@ -109,7 +109,7 @@ class Model {
     
     func delete(meme:Meme, callback:@escaping ()->Void){
         meme.logicalDeleted = true
-        modelFirebase.add(meme: meme){
+        modelFirebase.update(meme: meme){
             callback()
             self.notificationMemeList.post()
         }
