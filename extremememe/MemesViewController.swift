@@ -18,6 +18,7 @@ class MemesViewController: UIViewController{
     var refreshControl = UIRefreshControl()
     var editingFlag = false
 
+    @IBOutlet weak var displayName: UIBarButtonItem!
     @IBOutlet weak var loginbtn: UIBarButtonItem!
     @IBAction func sinInButton(_ sender: Any) {
         if loginbtn.title == "Logout" {
@@ -25,6 +26,7 @@ class MemesViewController: UIViewController{
                 try Auth.auth().signOut()
                 UserDefaults.standard.set("", forKey: "user")
                 loginbtn.title = "Login"
+                displayName.title = ""
                 self.tabBarController?.tabBar.isUserInteractionEnabled = false
             
             } catch let error as NSError {
@@ -45,7 +47,8 @@ class MemesViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         let user: String = UserDefaults.standard.string(forKey: "user") ?? ""
-     
+        let name: String = UserDefaults.standard.string(forKey: "displayName") ?? ""
+        
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
         tableView.addSubview(refreshControl)
@@ -56,6 +59,7 @@ class MemesViewController: UIViewController{
         }
         else {
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
+            displayName.title = name
         }
         
         
@@ -63,9 +67,11 @@ class MemesViewController: UIViewController{
             self.reloadData()
         }
         
-        Model.instance.loginNotification.observe {
+        Model.instance.loginNotification.observe { [self] in
+            let name: String = UserDefaults.standard.string(forKey: "displayName") ?? ""
             self.loginbtn.title = "Logout"
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
+            displayName.title = name
         }
         
 

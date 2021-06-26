@@ -195,13 +195,19 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="HwB-7X-PNX"/>
                     <navigationItem key="navigationItem" title="Main Feed" id="GeC-Zw-IfE">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="1D8-qb-IlM">
-                            <connections>
-                                <action selector="sinInButton:" destination="mpG-uH-nuS" id="NMX-LB-gCw"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Login" id="1D8-qb-IlM">
+                                <connections>
+                                    <action selector="sinInButton:" destination="mpG-uH-nuS" id="NMX-LB-gCw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="eAq-pd-9Kh">
+                                <color key="tintColor" systemColor="labelColor"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="displayName" destination="eAq-pd-9Kh" id="p6W-2u-GJh"/>
                         <outlet property="loginbtn" destination="1D8-qb-IlM" id="0or-1i-c6H"/>
                         <outlet property="memesTableView" destination="DOx-F8-dlv" id="cmL-mT-NmZ"/>
                         <outlet property="tableView" destination="DOx-F8-dlv" id="BDr-5H-FGT"/>

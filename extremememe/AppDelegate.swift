@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         UserDefaults.standard.set(user.userID ?? "", forKey: "user")
+        UserDefaults.standard.set(user.profile.name ?? "", forKey: "displayName")
         Model.instance.loginNotification.post()
     }
     
